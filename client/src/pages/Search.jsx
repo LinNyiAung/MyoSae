@@ -6,7 +6,8 @@ export default function Search() {
   const navigate = useNavigate();
   const [sidebardata, setSidebardata] = useState({
     searchTerm: '',
-    investmenttype: 'all',
+    investmenttype: 'investmentall',
+    businesstype: 'businessall',
     parking: false,
     furnished: false,
     offer: false,
@@ -22,6 +23,7 @@ export default function Search() {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
     const investmenttypeFromUrl = urlParams.get('investmenttype');
+    const businesstypeFromUrl = urlParams.get('businesstype');
     const parkingFromUrl = urlParams.get('parking');
     const furnishedFromUrl = urlParams.get('furnished');
     const offerFromUrl = urlParams.get('offer');
@@ -31,6 +33,7 @@ export default function Search() {
     if (
       searchTermFromUrl ||
       investmenttypeFromUrl ||
+      businesstypeFromUrl ||
       parkingFromUrl ||
       furnishedFromUrl ||
       offerFromUrl ||
@@ -39,7 +42,8 @@ export default function Search() {
     ) {
       setSidebardata({
         searchTerm: searchTermFromUrl || '',
-        investmenttype: investmenttypeFromUrl || 'all',
+        investmenttype: investmenttypeFromUrl || 'investmentall',
+        businesstype: businesstypeFromUrl || 'businessall',
         parking: parkingFromUrl === 'true' ? true : false,
         furnished: furnishedFromUrl === 'true' ? true : false,
         offer: offerFromUrl === 'true' ? true : false,
@@ -68,12 +72,21 @@ export default function Search() {
 
   const handleChange = (e) => {
     if (
-      e.target.id === 'all' ||
+      e.target.id === 'investmentall' ||
       e.target.id === 'Equity Investment' ||
       e.target.id === 'Debt Investment' ||
       e.target.id === 'Revenue Sharing'
     ) {
       setSidebardata({ ...sidebardata, investmenttype: e.target.id });
+    }
+
+    if (
+      e.target.id === 'businessall' ||
+      e.target.id === 'Startups' ||
+      e.target.id === 'SMEs' ||
+      e.target.id === 'Non-Profits'
+    ) {
+      setSidebardata({ ...sidebardata, businesstype: e.target.id });
     }
 
     if (e.target.id === 'searchTerm') {
@@ -106,6 +119,7 @@ export default function Search() {
     const urlParams = new URLSearchParams();
     urlParams.set('searchTerm', sidebardata.searchTerm);
     urlParams.set('investmenttype', sidebardata.investmenttype);
+    urlParams.set('businesstype', sidebardata.businesstype);
     urlParams.set('parking', sidebardata.parking);
     urlParams.set('furnished', sidebardata.furnished);
     urlParams.set('offer', sidebardata.offer);
@@ -146,17 +160,18 @@ export default function Search() {
             />
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
-            <label className='font-semibold'>Type:</label>
+            <label className='font-semibold'>Investment Type:</label>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='all'
+                id='investmentall'
                 className='w-5'
                 onChange={handleChange}
-                checked={sidebardata.investmenttype === 'all'}
+                checked={sidebardata.investmenttype === 'investmentall'}
               />
               <span>All</span>
             </div>
+            
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -187,6 +202,7 @@ export default function Search() {
               />
               <span>Revenue Sharing</span>
             </div>
+            
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -198,6 +214,49 @@ export default function Search() {
               <span>Offer</span>
             </div>
           </div>
+          <div className='flex gap-2 flex-wrap items-center'>
+            <label className='font-semibold'>Business Type:</label>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='businessall'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.businesstype === 'businessall'}
+              />
+              <span>All</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Startups'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.businesstype === 'Startups'}
+              />
+              <span>Startups</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='SMEs'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.businesstype === 'SMEs'}
+              />
+              <span>SMEs</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Non-Profits'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.businesstype === 'Non-Profits'}
+              />
+              <span>Non-Profits</span>
+            </div>
+          </div>  
           <div className='flex gap-2 flex-wrap items-center'>
             <label className='font-semibold'>Amenities:</label>
             <div className='flex gap-2'>

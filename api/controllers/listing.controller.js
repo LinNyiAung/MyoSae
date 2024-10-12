@@ -86,8 +86,14 @@ export const getListings = async (req, res, next) => {
 
     let investmenttype = req.query.investmenttype;
 
-    if (investmenttype === undefined || investmenttype === 'all') {
+    if (investmenttype === undefined || investmenttype === 'investmentall') {
       investmenttype = { $in: ['Equity Investment', 'Debt Investment', 'Revenue Sharing'] };
+    }
+
+    let businesstype = req.query.businesstype;
+
+    if (businesstype === undefined || businesstype === 'businessall') {
+      businesstype = { $in: ['Startups', 'SMEs', 'Non-Profits'] };
     }
 
     const searchTerm = req.query.searchTerm || '';
@@ -102,6 +108,7 @@ export const getListings = async (req, res, next) => {
       furnished,
       parking,
       investmenttype,
+      businesstype,
     })
       .sort({ [sort]: order })
       .limit(limit)

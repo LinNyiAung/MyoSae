@@ -20,6 +20,7 @@ export default function CreateListing() {
     description: '',
     address: '',
     investmenttype: 'Equity Investment',
+    businesstype: 'Startups',
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 50,
@@ -113,6 +114,13 @@ export default function CreateListing() {
       setFormData({
         ...formData,
         investmenttype: e.target.id,
+      });
+    }
+
+    if (e.target.id === 'Startups' || e.target.id === 'SMEs' || e.target.id === 'Non-Profits') {
+      setFormData({
+        ...formData,
+        businesstype: e.target.id,
       });
     }
 
@@ -235,6 +243,36 @@ export default function CreateListing() {
                 checked={formData.investmenttype === 'Debt Investment'}
               />
               <span>Debt Investment</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Startups'
+                className='w-5'
+                onChange={handleChange}
+                checked={formData.businesstype === 'Startups'}
+              />
+              <span>Startups</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='SMEs'
+                className='w-5'
+                onChange={handleChange}
+                checked={formData.businesstype === 'SMEs'}
+              />
+              <span>SMEs</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Non-Profits'
+                className='w-5'
+                onChange={handleChange}
+                checked={formData.businesstype === 'Non-Profits'}
+              />
+              <span>Non-Profits</span>
             </div>
             <div className='flex gap-2'>
               <input
