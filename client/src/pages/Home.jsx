@@ -8,8 +8,10 @@ import ListingItem from '../components/ListingItem';
 
 export default function Home() {
   const [offerListings, setOfferListings] = useState([]);
-  const [saleListings, setSaleListings] = useState([]);
-  const [rentListings, setRentListings] = useState([]);
+  const [EquityInvestmentListings, setEquityInvestmentListings] = useState([]);
+  const [DebtInvestmentListings, setDebtInvestmentListings] = useState([]);
+  const [RevenueSharingListings, setRevenueSharingListings] = useState([]);
+
   SwiperCore.use([Navigation]);
   console.log(offerListings);
   useEffect(() => {
@@ -18,31 +20,44 @@ export default function Home() {
         const res = await fetch('/api/listing/get?offer=true&limit=4');
         const data = await res.json();
         setOfferListings(data);
-        fetchRentListings();
+        fetchEquityInvestmentListings();
       } catch (error) {
         console.log(error);
       }
     };
-    const fetchRentListings = async () => {
+    const fetchEquityInvestmentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=rent&limit=4');
+        const res = await fetch('/api/listing/get?investmenttype=Equity Investment&limit=4');
         const data = await res.json();
-        setRentListings(data);
-        fetchSaleListings();
+        setEquityInvestmentListings(data);
+        fetchDebtInvestmentListings();
       } catch (error) {
         console.log(error);
       }
     };
 
-    const fetchSaleListings = async () => {
+    const fetchDebtInvestmentListings = async () => {
       try {
-        const res = await fetch('/api/listing/get?type=sale&limit=4');
+        const res = await fetch('/api/listing/get?investmenttype=Debt Investment&limit=4');
         const data = await res.json();
-        setSaleListings(data);
+        setDebtInvestmentListings(data);
+        fetchRevenueSharingListings();
       } catch (error) {
         log(error);
       }
     };
+
+    const fetchRevenueSharingListings = async () => {
+      try {
+        const res = await fetch('/api/listing/get?investmenttype=Revenue Sharing&limit=4');
+        const data = await res.json();
+        setRevenueSharingListings(data);
+      } catch (error) {
+        log(error);
+      }
+    };
+
+    
     fetchOfferListings();
   }, []);
   return (
@@ -102,27 +117,40 @@ export default function Home() {
             </div>
           </div>
         )}
-        {rentListings && rentListings.length > 0 && (
+        {EquityInvestmentListings && EquityInvestmentListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent places for rent</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=rent'}>Show more places for rent</Link>
+              <h2 className='text-2xl font-semibold text-slate-600'>Equity Investment</h2>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Equity Investment'}>Show more places for Equity Investment</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
-              {rentListings.map((listing) => (
+              {EquityInvestmentListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>
           </div>
         )}
-        {saleListings && saleListings.length > 0 && (
+        {DebtInvestmentListings && DebtInvestmentListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Recent places for sale</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?type=sale'}>Show more places for sale</Link>
+              <h2 className='text-2xl font-semibold text-slate-600'>Debt Investment</h2>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Debt Investment'}>Show more places for Debt Investment</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
-              {saleListings.map((listing) => (
+              {DebtInvestmentListings.map((listing) => (
+                <ListingItem listing={listing} key={listing._id} />
+              ))}
+            </div>
+          </div>
+        )}
+        {RevenueSharingListings && RevenueSharingListings.length > 0 && (
+          <div className=''>
+            <div className='my-3'>
+              <h2 className='text-2xl font-semibold text-slate-600'>Revenue Sharing</h2>
+              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Revenue Sharing'}>Show more places for Revenue Sharing</Link>
+            </div>
+            <div className='flex flex-wrap gap-4'>
+              {RevenueSharingListings.map((listing) => (
                 <ListingItem listing={listing} key={listing._id} />
               ))}
             </div>

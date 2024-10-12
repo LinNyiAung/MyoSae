@@ -6,7 +6,7 @@ export default function Search() {
   const navigate = useNavigate();
   const [sidebardata, setSidebardata] = useState({
     searchTerm: '',
-    type: 'all',
+    investmenttype: 'all',
     parking: false,
     furnished: false,
     offer: false,
@@ -21,7 +21,7 @@ export default function Search() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
-    const typeFromUrl = urlParams.get('type');
+    const investmenttypeFromUrl = urlParams.get('investmenttype');
     const parkingFromUrl = urlParams.get('parking');
     const furnishedFromUrl = urlParams.get('furnished');
     const offerFromUrl = urlParams.get('offer');
@@ -30,7 +30,7 @@ export default function Search() {
 
     if (
       searchTermFromUrl ||
-      typeFromUrl ||
+      investmenttypeFromUrl ||
       parkingFromUrl ||
       furnishedFromUrl ||
       offerFromUrl ||
@@ -39,7 +39,7 @@ export default function Search() {
     ) {
       setSidebardata({
         searchTerm: searchTermFromUrl || '',
-        type: typeFromUrl || 'all',
+        investmenttype: investmenttypeFromUrl || 'all',
         parking: parkingFromUrl === 'true' ? true : false,
         furnished: furnishedFromUrl === 'true' ? true : false,
         offer: offerFromUrl === 'true' ? true : false,
@@ -69,10 +69,11 @@ export default function Search() {
   const handleChange = (e) => {
     if (
       e.target.id === 'all' ||
-      e.target.id === 'rent' ||
-      e.target.id === 'sale'
+      e.target.id === 'Equity Investment' ||
+      e.target.id === 'Debt Investment' ||
+      e.target.id === 'Revenue Sharing'
     ) {
-      setSidebardata({ ...sidebardata, type: e.target.id });
+      setSidebardata({ ...sidebardata, investmenttype: e.target.id });
     }
 
     if (e.target.id === 'searchTerm') {
@@ -104,7 +105,7 @@ export default function Search() {
     e.preventDefault();
     const urlParams = new URLSearchParams();
     urlParams.set('searchTerm', sidebardata.searchTerm);
-    urlParams.set('type', sidebardata.type);
+    urlParams.set('investmenttype', sidebardata.investmenttype);
     urlParams.set('parking', sidebardata.parking);
     urlParams.set('furnished', sidebardata.furnished);
     urlParams.set('offer', sidebardata.offer);
@@ -152,29 +153,39 @@ export default function Search() {
                 id='all'
                 className='w-5'
                 onChange={handleChange}
-                checked={sidebardata.type === 'all'}
+                checked={sidebardata.investmenttype === 'all'}
               />
-              <span>Rent & Sale</span>
+              <span>All</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='rent'
+                id='Equity Investment'
                 className='w-5'
                 onChange={handleChange}
-                checked={sidebardata.type === 'rent'}
+                checked={sidebardata.investmenttype === 'Equity Investment'}
               />
-              <span>Rent</span>
+              <span>Equity Investment</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='sale'
+                id='Debt Investment'
                 className='w-5'
                 onChange={handleChange}
-                checked={sidebardata.type === 'sale'}
+                checked={sidebardata.investmenttype === 'Debt Investment'}
               />
-              <span>Sale</span>
+              <span>Debt Investment</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Revenue Sharing'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.investmenttype === 'Revenue Sharing'}
+              />
+              <span>Revenue Sharing</span>
             </div>
             <div className='flex gap-2'>
               <input

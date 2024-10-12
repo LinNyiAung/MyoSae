@@ -19,7 +19,7 @@ export default function CreateListing() {
     name: '',
     description: '',
     address: '',
-    type: 'rent',
+    investmenttype: 'Equity Investment',
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 50,
@@ -109,10 +109,10 @@ export default function CreateListing() {
   };
 
   const handleChange = (e) => {
-    if (e.target.id === 'sale' || e.target.id === 'rent') {
+    if (e.target.id === 'Debt Investment' || e.target.id === 'Equity Investment' || e.target.id === 'Revenue Sharing') {
       setFormData({
         ...formData,
-        type: e.target.id,
+        investmenttype: e.target.id,
       });
     }
 
@@ -206,25 +206,35 @@ export default function CreateListing() {
             value={formData.address}
           />
           <div className='flex gap-6 flex-wrap'>
-            <div className='flex gap-2'>
+          <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='sale'
+                id='Revenue Sharing'
                 className='w-5'
                 onChange={handleChange}
-                checked={formData.type === 'sale'}
+                checked={formData.investmenttype === 'Revenue Sharing'}
               />
-              <span>Sell</span>
+              <span>Revenue Sharing</span>
             </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
-                id='rent'
+                id='Equity Investment'
                 className='w-5'
                 onChange={handleChange}
-                checked={formData.type === 'rent'}
+                checked={formData.investmenttype === 'Equity Investment'}
               />
-              <span>Rent</span>
+              <span>Equity Investment</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Debt Investment'
+                className='w-5'
+                onChange={handleChange}
+                checked={formData.investmenttype === 'Debt Investment'}
+              />
+              <span>Debt Investment</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -297,7 +307,7 @@ export default function CreateListing() {
               />
               <div className='flex flex-col items-center'>
                 <p>Regular price</p>
-                {formData.type === 'rent' && (
+                {formData.investmenttype === 'rent' && (
                   <span className='text-xs'>($ / month)</span>
                 )}
               </div>
@@ -316,7 +326,8 @@ export default function CreateListing() {
                 />
                 <div className='flex flex-col items-center'>
                   <p>Discounted price</p>
-                  {formData.type === 'rent' && (
+
+                  {formData.investmenttype === 'rent' && (
                     <span className='text-xs'>($ / month)</span>
                   )}
                 </div>

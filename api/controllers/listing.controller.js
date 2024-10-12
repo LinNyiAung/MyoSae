@@ -84,10 +84,10 @@ export const getListings = async (req, res, next) => {
       parking = { $in: [false, true] };
     }
 
-    let type = req.query.type;
+    let investmenttype = req.query.investmenttype;
 
-    if (type === undefined || type === 'all') {
-      type = { $in: ['sale', 'rent'] };
+    if (investmenttype === undefined || investmenttype === 'all') {
+      investmenttype = { $in: ['Equity Investment', 'Debt Investment', 'Revenue Sharing'] };
     }
 
     const searchTerm = req.query.searchTerm || '';
@@ -101,7 +101,7 @@ export const getListings = async (req, res, next) => {
       offer,
       furnished,
       parking,
-      type,
+      investmenttype,
     })
       .sort({ [sort]: order })
       .limit(limit)

@@ -38,7 +38,7 @@ const listingSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    type: {
+    investmenttype: {
       type: String,
       required: true,
     },
