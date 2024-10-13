@@ -46,6 +46,29 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // industry: {
+    //   type: String,
+    //   required: true,
+    //   enum: [
+    //     'Technology',
+    //     'Healthcare',
+    //     'Fintech',
+    //     'Real Estate',
+    //     'Education',
+    //     'E-commerce',
+    //     'Energy & Sustainability',
+    //     'Agriculture',
+    //     'Manufacturing',
+    //     'Media & Entertainment',
+    //     'Fashion & Apparel',
+    //     'Food & Beverage',
+    //   ],
+    // },
+    industry: {
+      type: String,
+      required: true,
+    },
+    
     offer: {
       type: Boolean,
       required: true,

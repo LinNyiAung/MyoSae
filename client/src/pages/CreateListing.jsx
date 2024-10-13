@@ -20,6 +20,7 @@ export default function CreateListing() {
     address: '',
     investmenttype: 'Equity Investment',
     businesstype: 'Startups',
+    industry: 'Technology',
     bedrooms: 1,
     bathrooms: 1,
     regularPrice: 50,
@@ -105,6 +106,13 @@ export default function CreateListing() {
       setFormData({
         ...formData,
         businesstype: e.target.id,
+      });
+    }
+
+    if (e.target.id === 'industry') {
+      setFormData({
+        ...formData,
+        industry: e.target.value,
       });
     }
 
@@ -258,6 +266,24 @@ export default function CreateListing() {
               />
               <span>Non-Profits</span>
             </div>
+            <div className='flex gap-2'>
+  <label htmlFor='industry' className='font-semibold'>
+    Select Industry:
+  </label>
+  <select
+    id='industry'
+    className='border p-3 rounded-lg'
+    value={formData.industry}
+    onChange={handleChange}
+    required
+  >
+    <option value='Technology'>Technology</option>
+    <option value='Healthcare'>Healthcare</option>
+    <option value='Finance'>Finance</option>
+    <option value='Real Estate'>Real Estate</option>
+    <option value='Education'>Education</option>
+  </select>
+</div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'

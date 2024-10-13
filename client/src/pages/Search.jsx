@@ -8,6 +8,7 @@ export default function Search() {
     searchTerm: '',
     investmenttype: 'investmentall',
     businesstype: 'businessall',
+    industry: 'industryall',
     parking: false,
     furnished: false,
     offer: false,
@@ -24,6 +25,7 @@ export default function Search() {
     const searchTermFromUrl = urlParams.get('searchTerm');
     const investmenttypeFromUrl = urlParams.get('investmenttype');
     const businesstypeFromUrl = urlParams.get('businesstype');
+    const industryFromUrl = urlParams.get('industry');
     const parkingFromUrl = urlParams.get('parking');
     const furnishedFromUrl = urlParams.get('furnished');
     const offerFromUrl = urlParams.get('offer');
@@ -34,6 +36,7 @@ export default function Search() {
       searchTermFromUrl ||
       investmenttypeFromUrl ||
       businesstypeFromUrl ||
+      industryFromUrl ||
       parkingFromUrl ||
       furnishedFromUrl ||
       offerFromUrl ||
@@ -44,6 +47,7 @@ export default function Search() {
         searchTerm: searchTermFromUrl || '',
         investmenttype: investmenttypeFromUrl || 'investmentall',
         businesstype: businesstypeFromUrl || 'businessall',
+        industry: industryFromUrl || 'industryall',
         parking: parkingFromUrl === 'true' ? true : false,
         furnished: furnishedFromUrl === 'true' ? true : false,
         offer: offerFromUrl === 'true' ? true : false,
@@ -89,6 +93,10 @@ export default function Search() {
       setSidebardata({ ...sidebardata, businesstype: e.target.id });
     }
 
+    if (e.target.id === 'industry') {
+      setSidebardata({ ...sidebardata, industry: e.target.value });
+    }
+
     if (e.target.id === 'searchTerm') {
       setSidebardata({ ...sidebardata, searchTerm: e.target.value });
     }
@@ -120,6 +128,7 @@ export default function Search() {
     urlParams.set('searchTerm', sidebardata.searchTerm);
     urlParams.set('investmenttype', sidebardata.investmenttype);
     urlParams.set('businesstype', sidebardata.businesstype);
+    urlParams.set('industry', sidebardata.industry);
     urlParams.set('parking', sidebardata.parking);
     urlParams.set('furnished', sidebardata.furnished);
     urlParams.set('offer', sidebardata.offer);
@@ -256,6 +265,25 @@ export default function Search() {
               />
               <span>Non-Profits</span>
             </div>
+          </div>
+          <div className='flex items-center gap-2'>
+            <label className='whitespace-nowrap font-semibold'>
+              Industry:
+            </label>
+            <select
+              id='industry'
+              value={sidebardata.industry}
+              onChange={handleChange}
+              className='border rounded-lg p-3 w-full'
+            >
+              <option value='industryall'>All</option>
+              <option value='Technology'>Technology</option>
+              <option value='Healthcare'>Healthcare</option>
+              <option value='Finance'>Finance</option>
+              <option value='Real Estate'>Real Estate</option>
+              <option value='Education'>Education</option>
+              {/* Add more options as needed */}
+            </select>
           </div>  
           <div className='flex gap-2 flex-wrap items-center'>
             <label className='font-semibold'>Amenities:</label>

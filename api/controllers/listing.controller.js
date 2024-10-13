@@ -96,6 +96,20 @@ export const getListings = async (req, res, next) => {
       businesstype = { $in: ['Startups', 'SMEs', 'Non-Profits'] };
     }
 
+    let industry = req.query.industry;
+
+    if (industry === undefined || industry === 'industryall') {
+      industry = {
+        $in: [
+          'Technology',
+          'Healthcare',
+          'Finance',
+          'Real Estate',
+          'Education',
+        ],
+      };
+    }
+
     const searchTerm = req.query.searchTerm || '';
 
     const sort = req.query.sort || 'createdAt';
@@ -109,6 +123,7 @@ export const getListings = async (req, res, next) => {
       parking,
       investmenttype,
       businesstype,
+      industry,
     })
       .sort({ [sort]: order })
       .limit(limit)
