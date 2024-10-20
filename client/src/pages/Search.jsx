@@ -316,8 +316,10 @@ export default function Search() {
               id='sort_order'
               className='border rounded-lg p-3'
             >
-              <option value='neededFund_desc'>Price high to low</option>
-              <option value='neededFund_asc'>Price low to hight</option>
+              <option value='neededFund_desc'>Needed Fund high to low</option>
+              <option value='neededFund_asc'>Needed Fund low to high</option>
+              <option value='minimumInvestmentAmount_desc'>Investment Amount high to low</option>
+              <option value='minimumInvestmentAmount_asc'>Investment Amount low to high</option>
               <option value='createdAt_desc'>Latest</option>
               <option value='createdAt_asc'>Oldest</option>
             </select>

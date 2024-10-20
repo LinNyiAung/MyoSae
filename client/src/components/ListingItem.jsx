@@ -30,19 +30,18 @@ export default function ListingItem({ listing }) {
             $
             {listing.offer
               ? listing.discountPrice.toLocaleString('en-US')
-              : listing.neededFund.toLocaleString('en-US')}
+              : `${listing.neededFund.toLocaleString('en-US')} / $${listing.minimumInvestmentAmount.toLocaleString('en-US')}`}
             {listing.investmenttype === 'rent' && ' / month'}
           </p>
           <div className='text-slate-700 flex gap-4'>
             <div className='font-bold text-xs'>
-              {listing.bedrooms > 1
-                ? `${listing.bedrooms} beds `
-                : `${listing.bedrooms} bed `}
+              {listing.investmenttype}
             </div>
             <div className='font-bold text-xs'>
-              {listing.bathrooms > 1
-                ? `${listing.bathrooms} baths `
-                : `${listing.bathrooms} bath `}
+              {listing.businesstype}
+            </div>
+            <div className='font-bold text-xs'>
+              {listing.industry}
             </div>
           </div>
         </div>

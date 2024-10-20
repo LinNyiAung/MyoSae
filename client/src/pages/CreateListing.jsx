@@ -24,6 +24,7 @@ export default function CreateListing() {
     bedrooms: 1,
     bathrooms: 1,
     neededFund: 50,
+    minimumInvestmentAmount: 1,
     discountPrice: 0,
     offer: false,
     parking: false,
@@ -355,6 +356,24 @@ export default function CreateListing() {
               />
               <div className='flex flex-col items-center'>
                 <p>Needed Fund</p>
+                {formData.investmenttype === 'rent' && (
+                  <span className='text-xs'>($ / month)</span>
+                )}
+              </div>
+            </div>
+            <div className='flex items-center gap-2'>
+              <input
+                type='number'
+                id='minimumInvestmentAmount'
+                min='1'
+                
+                required
+                className='p-3 border border-gray-300 rounded-lg'
+                onChange={handleChange}
+                value={formData.minimumInvestmentAmount}
+              />
+              <div className='flex flex-col items-center'>
+                <p>Minimum Investment Amount</p>
                 {formData.investmenttype === 'rent' && (
                   <span className='text-xs'>($ / month)</span>
                 )}

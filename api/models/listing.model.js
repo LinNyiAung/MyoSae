@@ -18,6 +18,10 @@ const listingSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    minimumInvestmentAmount: {
+      type: Number,
+      required: true,
+    },
     discountPrice: {
       type: Number,
       required: true,
