@@ -30,7 +30,7 @@ export default function ListingItem({ listing }) {
             $
             {listing.offer
               ? listing.discountPrice.toLocaleString('en-US')
-              : listing.regularPrice.toLocaleString('en-US')}
+              : listing.neededFund.toLocaleString('en-US')}
             {listing.investmenttype === 'rent' && ' / month'}
           </p>
           <div className='text-slate-700 flex gap-4'>

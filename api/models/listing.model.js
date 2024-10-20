@@ -14,7 +14,7 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    regularPrice: {
+    neededFund: {
       type: Number,
       required: true,
     },

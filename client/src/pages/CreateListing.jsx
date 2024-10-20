@@ -23,7 +23,7 @@ export default function CreateListing() {
     industry: 'Technology',
     bedrooms: 1,
     bathrooms: 1,
-    regularPrice: 50,
+    neededFund: 50,
     discountPrice: 0,
     offer: false,
     parking: false,
@@ -144,7 +144,7 @@ export default function CreateListing() {
     try {
       if (formData.imageUrls.length < 1)
         return setError('You must upload at least one image');
-      if (+formData.regularPrice < +formData.discountPrice)
+      if (+formData.neededFund < +formData.discountPrice)
         return setError('Discount price must be lower than regular price');
       setLoading(true);
       setError(false);
@@ -267,23 +267,23 @@ export default function CreateListing() {
               <span>Non-Profits</span>
             </div>
             <div className='flex gap-2'>
-  <label htmlFor='industry' className='font-semibold'>
-    Select Industry:
-  </label>
-  <select
-    id='industry'
-    className='border p-3 rounded-lg'
-    value={formData.industry}
-    onChange={handleChange}
-    required
-  >
-    <option value='Technology'>Technology</option>
-    <option value='Healthcare'>Healthcare</option>
-    <option value='Finance'>Finance</option>
-    <option value='Real Estate'>Real Estate</option>
-    <option value='Education'>Education</option>
-  </select>
-</div>
+            <label htmlFor='industry' className='font-semibold'>
+            Select Industry:
+            </label>
+            <select
+            id='industry'
+            className='border p-3 rounded-lg'
+            value={formData.industry}
+            onChange={handleChange}
+            required
+            >
+            <option value='Technology'>Technology</option>
+            <option value='Healthcare'>Healthcare</option>
+            <option value='Finance'>Finance</option>
+            <option value='Real Estate'>Real Estate</option>
+            <option value='Education'>Education</option>
+            </select>
+            </div>
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -345,16 +345,16 @@ export default function CreateListing() {
             <div className='flex items-center gap-2'>
               <input
                 type='number'
-                id='regularPrice'
+                id='neededFund'
                 min='50'
                 max='10000000'
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
-                value={formData.regularPrice}
+                value={formData.neededFund}
               />
               <div className='flex flex-col items-center'>
-                <p>Regular price</p>
+                <p>Needed Fund</p>
                 {formData.investmenttype === 'rent' && (
                   <span className='text-xs'>($ / month)</span>
                 )}
