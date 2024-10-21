@@ -25,6 +25,7 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
+  const [listowner, setListowner] = useState(null);
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
@@ -40,6 +41,12 @@ export default function Listing() {
           return;
         }
         setListing(data);
+
+        // Fetch listowner data
+        const listownerRes = await fetch(`/api/user/${data.userRef}`);
+        const listownerData = await listownerRes.json();
+        setListowner(listownerData);
+
         setLoading(false);
         setError(false);
       } catch (error) {
@@ -92,6 +99,20 @@ export default function Listing() {
             <p className='text-4xl font-semibold'>
               {listing.name}
             </p>
+
+            {/* Display listowner's Avatar and Name */}
+            {listowner && (
+              <div className="flex items-center gap-3">
+                <p className="text-lg text-gray-700">
+                  Listed by: <span className="font-semibold">{listowner.username}</span>
+                </p>
+                <img
+                  src={listowner.avatar}
+                  alt="listowner avatar"
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+              </div>
+            )}
             <p className='text-2xl font-semibold'>
               Needed Fund - ${' '} {`${listing.neededFund.toLocaleString('en-US')}`}
             </p>
