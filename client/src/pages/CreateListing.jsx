@@ -18,8 +18,9 @@ export default function CreateListing() {
     name: '',
     description: '',
     address: '',
-    investmenttype: 'Equity Investment',
+    investmenttype: 'Revenue Sharing',
     businesstype: 'Startups',
+    startupstage: 'Idea Stage',
     industry: 'Technology',
     bedrooms: 1,
     bathrooms: 1,
@@ -110,6 +111,13 @@ export default function CreateListing() {
       });
     }
 
+    if (e.target.id === 'Idea Stage' || e.target.id === 'Pre-Seed/Seed' || e.target.id === 'Early Stage' || e.target.id === 'Growth Stage' || e.target.id === 'Mature Stage') {
+      setFormData({
+        ...formData,
+        startupstage: e.target.id,
+      });
+    }
+
     if (e.target.id === 'industry') {
       setFormData({
         ...formData,
@@ -147,6 +155,8 @@ export default function CreateListing() {
         return setError('You must upload at least one image');
       if (+formData.neededFund < +formData.discountPrice)
         return setError('Discount price must be lower than regular price');
+      if (+formData.neededFund < +formData.minimumInvestmentAmount)
+        return setError('Minimum Investment Amount must be lower than Needed Fund');
       setLoading(true);
       setError(false);
       const res = await fetch('/api/listing/create', {
@@ -274,6 +284,56 @@ export default function CreateListing() {
               <span>Non-Profits</span>
             </div>
           </div>
+          {formData.businesstype == 'Startups' && (
+              <><h1 className='text-xl font-semibold text-center mt-2'>Startup Stage</h1><div className='flex gap-6 flex-wrap'>
+
+              <div className='flex gap-2'>
+                <input
+                  type='checkbox'
+                  id='Idea Stage'
+                  className='w-5'
+                  onChange={handleChange}
+                  checked={formData.startupstage === 'Idea Stage'} />
+                <span>Idea Stage</span>
+              </div>
+              <div className='flex gap-2'>
+                <input
+                  type='checkbox'
+                  id='Pre-Seed/Seed'
+                  className='w-5'
+                  onChange={handleChange}
+                  checked={formData.startupstage === 'Pre-Seed/Seed'} />
+                <span>Pre-Seed/Seed</span>
+              </div>
+              <div className='flex gap-2'>
+                <input
+                  type='checkbox'
+                  id='Early Stage'
+                  className='w-5'
+                  onChange={handleChange}
+                  checked={formData.startupstage === 'Early Stage'} />
+                <span>Early Stage</span>
+              </div>
+              <div className='flex gap-2'>
+                <input
+                  type='checkbox'
+                  id='Growth Stage'
+                  className='w-5'
+                  onChange={handleChange}
+                  checked={formData.startupstage === 'Growth Stage'} />
+                <span>Growth Stage</span>
+              </div>
+              <div className='flex gap-2'>
+                <input
+                  type='checkbox'
+                  id='Mature Stage'
+                  className='w-5'
+                  onChange={handleChange}
+                  checked={formData.startupstage === 'Mature Stage'} />
+                <span>Mature Stage</span>
+              </div>
+            </div></>
+            )}
           <h1 className='text-xl font-semibold text-center '>Industries</h1>
           <div className='flex gap-6 flex-wrap'>
           <div className='flex gap-2'>

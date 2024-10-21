@@ -8,6 +8,7 @@ export default function Search() {
     searchTerm: '',
     investmenttype: 'investmentall',
     businesstype: 'businessall',
+    startupstage: 'stageall',
     industry: 'industryall',
     parking: false,
     furnished: false,
@@ -25,6 +26,7 @@ export default function Search() {
     const searchTermFromUrl = urlParams.get('searchTerm');
     const investmenttypeFromUrl = urlParams.get('investmenttype');
     const businesstypeFromUrl = urlParams.get('businesstype');
+    const startupstageFromUrl = urlParams.get('startupstage');
     const industryFromUrl = urlParams.get('industry');
     const parkingFromUrl = urlParams.get('parking');
     const furnishedFromUrl = urlParams.get('furnished');
@@ -36,6 +38,7 @@ export default function Search() {
       searchTermFromUrl ||
       investmenttypeFromUrl ||
       businesstypeFromUrl ||
+      startupstageFromUrl ||
       industryFromUrl ||
       parkingFromUrl ||
       furnishedFromUrl ||
@@ -47,6 +50,7 @@ export default function Search() {
         searchTerm: searchTermFromUrl || '',
         investmenttype: investmenttypeFromUrl || 'investmentall',
         businesstype: businesstypeFromUrl || 'businessall',
+        startupstage: startupstageFromUrl || 'stageall',
         industry: industryFromUrl || 'industryall',
         parking: parkingFromUrl === 'true' ? true : false,
         furnished: furnishedFromUrl === 'true' ? true : false,
@@ -90,7 +94,27 @@ export default function Search() {
       e.target.id === 'SMEs' ||
       e.target.id === 'Non-Profits'
     ) {
-      setSidebardata({ ...sidebardata, businesstype: e.target.id });
+      // If 'businessall' is selected, set 'startupstage' to 'stageall'
+      if (e.target.id === 'businessall') {
+        setSidebardata({
+          ...sidebardata,
+          businesstype: e.target.id,
+          startupstage: 'stageall', // Set startup stage to stageall when businessall is selected
+        });
+      } else {
+        setSidebardata({ ...sidebardata, businesstype: e.target.id });
+      }
+    }
+
+    if (
+      e.target.id === 'stageall' ||
+      e.target.id === 'Idea Stage' ||
+      e.target.id === 'Pre-Seed/Seed' ||
+      e.target.id === 'Early Stage' ||
+      e.target.id === 'Growth Stage' ||
+      e.target.id === 'Mature Stage' 
+    ) {
+      setSidebardata({ ...sidebardata, startupstage: e.target.id });
     }
 
     if (e.target.id === 'industry') {
@@ -128,6 +152,7 @@ export default function Search() {
     urlParams.set('searchTerm', sidebardata.searchTerm);
     urlParams.set('investmenttype', sidebardata.investmenttype);
     urlParams.set('businesstype', sidebardata.businesstype);
+    urlParams.set('startupstage', sidebardata.startupstage);
     urlParams.set('industry', sidebardata.industry);
     urlParams.set('parking', sidebardata.parking);
     urlParams.set('furnished', sidebardata.furnished);
@@ -266,6 +291,71 @@ export default function Search() {
               <span>Non-Profits</span>
             </div>
           </div>
+          {sidebardata.businesstype == 'Startups' && (
+            <div className='flex gap-2 flex-wrap items-center'>
+            <label className='font-semibold'>Startup Stage:</label>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='stageall'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'stageall'}
+              />
+              <span>All</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Idea Stage'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'Idea Stage'}
+              />
+              <span>Idea Stage</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Pre-Seed/Seed'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'Pre-Seed/Seed'}
+              />
+              <span>Pre-Seed/Seed</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Early Stage'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'Early Stage'}
+              />
+              <span>Early Stage</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Growth Stage'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'Growth Stage'}
+              />
+              <span>Growth Stage</span>
+            </div>
+            <div className='flex gap-2'>
+              <input
+                type='checkbox'
+                id='Mature Stage'
+                className='w-5'
+                onChange={handleChange}
+                checked={sidebardata.startupstage === 'Mature Stage'}
+              />
+              <span>Mature Stage</span>
+            </div>
+          </div>
+          )}
           <div className='flex items-center gap-2'>
             <label className='whitespace-nowrap font-semibold'>
               Industry:

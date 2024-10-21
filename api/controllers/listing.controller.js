@@ -96,6 +96,12 @@ export const getListings = async (req, res, next) => {
       businesstype = { $in: ['Startups', 'SMEs', 'Non-Profits'] };
     }
 
+    let startupstage = req.query.startupstage;
+
+    if (startupstage === undefined || startupstage === 'stageall') {
+      startupstage = { $in: ['Idea Stage', 'Pre-Seed/Seed', 'Early Stage', 'Growth Stage', 'Mature Stage'] };
+    }
+
     let industry = req.query.industry;
 
     if (industry === undefined || industry === 'industryall') {
@@ -123,6 +129,7 @@ export const getListings = async (req, res, next) => {
       parking,
       investmenttype,
       businesstype,
+      startupstage,
       industry,
     })
       .sort({ [sort]: order })

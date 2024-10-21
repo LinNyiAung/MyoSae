@@ -119,6 +119,11 @@ export default function Listing() {
                 ? 'SMEs'
                 : 'Non-Profits'}
               </p>
+              {listing.businesstype == 'Startups' && (
+                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+                  {listing.startupstage}
+                </p>
+              )}
               <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {listing.industry}
               </p>

@@ -50,6 +50,10 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    startupstage: {
+      type: String,
+      required: true,
+    },
     // industry: {
     //   type: String,
     //   required: true,
