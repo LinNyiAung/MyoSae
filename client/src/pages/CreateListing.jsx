@@ -206,8 +206,10 @@ export default function CreateListing() {
             onChange={handleChange}
             value={formData.address}
           />
+          <h1 className='text-xl font-semibold text-center '>Investment Type</h1>
           <div className='flex gap-6 flex-wrap'>
-            <div className='flex gap-2'>
+          <div className='flex gap-2'>
+              
               <input
                 type='checkbox'
                 id='Revenue Sharing'
@@ -237,7 +239,11 @@ export default function CreateListing() {
               />
               <span>Debt Investment</span>
             </div>
-            <div className='flex gap-2'>
+          </div>
+          <h1 className='text-xl font-semibold text-center '>Business Type</h1>
+          <div className='flex gap-6 flex-wrap'>
+            
+          <div className='flex gap-2'>
               <input
                 type='checkbox'
                 id='Startups'
@@ -267,13 +273,16 @@ export default function CreateListing() {
               />
               <span>Non-Profits</span>
             </div>
-            <div className='flex gap-2'>
+          </div>
+          <h1 className='text-xl font-semibold text-center '>Industries</h1>
+          <div className='flex gap-6 flex-wrap'>
+          <div className='flex gap-2'>
             <label htmlFor='industry' className='font-semibold'>
             Select Industry:
             </label>
             <select
             id='industry'
-            className='border p-3 rounded-lg'
+            className='border w-fit rounded-lg'
             value={formData.industry}
             onChange={handleChange}
             required
@@ -285,6 +294,11 @@ export default function CreateListing() {
             <option value='Education'>Education</option>
             </select>
             </div>
+          </div>
+          <div className='flex gap-6 flex-wrap'>
+            
+            
+            
             <div className='flex gap-2'>
               <input
                 type='checkbox'
@@ -348,7 +362,7 @@ export default function CreateListing() {
                 type='number'
                 id='neededFund'
                 min='50'
-                max='10000000'
+                
                 required
                 className='p-3 border border-gray-300 rounded-lg'
                 onChange={handleChange}
