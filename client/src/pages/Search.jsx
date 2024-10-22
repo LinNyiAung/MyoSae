@@ -356,11 +356,7 @@ export default function Search() {
               {/* Add more options as needed */}
             </select>
           </div>  
-          <div className='flex gap-2 flex-wrap items-center'>
-            <label className='font-semibold'>Amenities:</label>
-            
 
-          </div>
           <div className='flex items-center gap-2'>
             <label className='font-semibold'>Sort:</label>
             <select
