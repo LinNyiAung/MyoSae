@@ -23,12 +23,12 @@ export default function Header() {
     }
   }, [location.search]);
   return (
-    <header className='bg-slate-200 shadow-md'>
+    <header className='bg-olive4 shadow-md fixed w-full z-50'>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
         <Link to='/'>
           <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-            <span className='text-slate-500'>Myo</span>
-            <span className='text-slate-700'>Sae</span>
+            <span className='text-olive7'>Myo</span>
+            <span className='text-olive8'>Sae</span>
           </h1>
         </Link>
         <form
@@ -43,17 +43,17 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button>
-            <FaSearch className='text-slate-600' />
+            <FaSearch className='text-olive7' />
           </button>
         </form>
         <ul className='flex gap-4'>
-          <Link to='/'>
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
-              Home
+          <Link to='/search'>
+            <li className='hidden sm:inline text-olive7 hover:underline'>
+              Browse
             </li>
           </Link>
           <Link to='/about'>
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
+            <li className='hidden sm:inline text-olive7 hover:underline'>
               About
             </li>
           </Link>

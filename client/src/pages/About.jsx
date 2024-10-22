@@ -3,12 +3,14 @@ import React from 'react'
 export default function About() {
   return (
     <div className='py-20 px-4 max-w-6xl mx-auto'>
-      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Sahand Estate</h1>
-      <p className='mb-4 text-slate-700'>Sahand Estate is a leading real estate agency that specializes in helping clients buy, sell, and rent properties in the most desirable neighborhoods. Our team of experienced agents is dedicated to providing exceptional service and making the buying and selling process as smooth as possible.</p>
+      <h1 className='text-3xl font-bold mb-4 text-slate-800'>About Myo Sae</h1>
+      <p className='mb-4 text-slate-700'>Welcome to Myo Sae, a unique platform designed to bridge the gap between visionary entrepreneurs and strategic investors. Our mission is to empower startups, small businesses, and non-profits by providing them with a dynamic space to pitch their ideas, attract funding, and grow into successful enterprises.</p>
       <p className='mb-4 text-slate-700'>
-      Our mission is to help our clients achieve their real estate goals by providing expert advice, personalized service, and a deep understanding of the local market. Whether you are looking to buy, sell, or rent a property, we are here to help you every step of the way.
+      We understand that turning a great idea into a successful business requires more than just passion—it requires resources, mentorship, and investment. That’s why we’ve built this platform to connect innovative business owners with investors who believe in the potential of their ventures. Whether you’re seeking equity investment, debt funding, or revenue-sharing opportunities, Myo Sae provides the tools and network to help you achieve your goals.
       </p>
-      <p className='mb-4 text-slate-700'>Our team of agents has a wealth of experience and knowledge in the real estate industry, and we are committed to providing the highest level of service to our clients. We believe that buying or selling a property should be an exciting and rewarding experience, and we are dedicated to making that a reality for each and every one of our clients.</p>
+      <p className='mb-4 text-slate-700'>At the heart of our platform is a commitment to fostering meaningful collaborations. Business owners can showcase their projects, share their vision, and outline their funding needs, while investors can browse through curated opportunities, evaluate business plans, and make informed decisions on where to invest.</p>
+      <p className='mb-4 text-slate-700'>We believe in creating a win-win environment where ideas thrive, and investors see returns, not just in profit, but in the impact they create. Whether you’re an entrepreneur with a groundbreaking idea or an investor looking to support the next big thing, Myo Sae is here to facilitate your journey.</p>
+      <p className='mb-4 text-slate-700'>Join us, and together, let’s build the future of business.</p>
     </div>
   )
 }

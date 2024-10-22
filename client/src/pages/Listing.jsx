@@ -103,7 +103,7 @@ export default function Listing() {
             {/* Display listowner's Avatar and Name */}
             {listowner && (
               <div className="flex items-center gap-3">
-                <p className="text-lg text-gray-700">
+                <p className="text-lg text-olive7">
                   Listed by: <span className="font-semibold">{listowner.username}</span>
                 </p>
                 <img
@@ -124,7 +124,7 @@ export default function Listing() {
               {listing.address}
             </p>
             <div className='flex gap-4'>
-              <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+              <p className='bg-olive5 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {
                 listing.investmenttype === 'Equity Investment' 
                 ? 'Equity Investment' 
@@ -132,7 +132,7 @@ export default function Listing() {
                 ? 'Debt Investment'
                 : 'Revenue Sharing'}
               </p>
-              <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+              <p className='bg-olive5 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {
                 listing.businesstype === 'Startups' 
                 ? 'Startups' 
@@ -141,11 +141,11 @@ export default function Listing() {
                 : 'Non-Profits'}
               </p>
               {listing.businesstype == 'Startups' && (
-                <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+                <p className='bg-olive5 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                   {listing.startupstage}
                 </p>
               )}
-              <p className='bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
+              <p className='bg-olive5 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {listing.industry}
               </p>
               {listing.offer && (
@@ -162,7 +162,7 @@ export default function Listing() {
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'
+                className='bg-olive5 text-white rounded-lg uppercase hover:opacity-95 p-3'
               >
                 Contact Business Owner
               </button>

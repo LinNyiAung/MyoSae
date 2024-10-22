@@ -64,20 +64,19 @@ export default function Home() {
     <div>
       {/* top */}
       <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
-        <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
-          Find your next <span className='text-slate-500'>perfect</span>
+        <h1 className='text-olive7 font-bold text-3xl lg:text-6xl'>
+          Find your desired <span className='text-olive5'>perfect</span>
           <br />
-          place with ease
+          place to invest
         </h1>
-        <div className='text-gray-400 text-xs sm:text-sm'>
-          Sahand Estate is the best place to find your next perfect place to
-          live.
+        <div className='text-olive4 text-xs sm:text-sm'>
+        Myo Sae is a unique platform designed to bridge the gap between visionary entrepreneurs and strategic investors.
           <br />
-          We have a wide range of properties for you to choose from.
+          Join us, and together, let’s build the future of business.
         </div>
         <Link
           to={'/search'}
-          className='text-xs sm:text-sm text-blue-800 font-bold hover:underline'
+          className='text-xs sm:text-sm text-olive7 font-bold hover:underline'
         >
           Let's get started...
         </Link>
@@ -85,9 +84,9 @@ export default function Home() {
 
       {/* swiper */}
       <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 0 &&
-          offerListings.map((listing) => (
+        {EquityInvestmentListings &&
+          EquityInvestmentListings.length > 0 &&
+          EquityInvestmentListings.map((listing) => (
             <SwiperSlide>
               <div
                 style={{
@@ -120,8 +119,8 @@ export default function Home() {
         {EquityInvestmentListings && EquityInvestmentListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Equity Investment</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Equity Investment'}>Show more places for Equity Investment</Link>
+              <h2 className='text-2xl font-semibold text-olive6'>Equity Investment</h2>
+              <Link className='text-sm text-olive8 hover:underline' to={'/search?investmenttype=Equity Investment'}>Show more places for Equity Investment</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {EquityInvestmentListings.map((listing) => (
@@ -133,8 +132,8 @@ export default function Home() {
         {DebtInvestmentListings && DebtInvestmentListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Debt Investment</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Debt Investment'}>Show more places for Debt Investment</Link>
+              <h2 className='text-2xl font-semibold text-olive6'>Debt Investment</h2>
+              <Link className='text-sm text-olive8 hover:underline' to={'/search?investmenttype=Debt Investment'}>Show more places for Debt Investment</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {DebtInvestmentListings.map((listing) => (
@@ -146,8 +145,8 @@ export default function Home() {
         {RevenueSharingListings && RevenueSharingListings.length > 0 && (
           <div className=''>
             <div className='my-3'>
-              <h2 className='text-2xl font-semibold text-slate-600'>Revenue Sharing</h2>
-              <Link className='text-sm text-blue-800 hover:underline' to={'/search?investmenttype=Revenue Sharing'}>Show more places for Revenue Sharing</Link>
+              <h2 className='text-2xl font-semibold text-olive6'>Revenue Sharing</h2>
+              <Link className='text-sm text-olive8 hover:underline' to={'/search?investmenttype=Revenue Sharing'}>Show more places for Revenue Sharing</Link>
             </div>
             <div className='flex flex-wrap gap-4'>
               {RevenueSharingListings.map((listing) => (
