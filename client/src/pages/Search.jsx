@@ -10,9 +10,9 @@ export default function Search() {
     businesstype: 'businessall',
     startupstage: 'stageall',
     industry: 'industryall',
-    parking: false,
-    furnished: false,
-    offer: false,
+
+    
+    
     sort: 'created_at',
     order: 'desc',
   });
@@ -28,9 +28,9 @@ export default function Search() {
     const businesstypeFromUrl = urlParams.get('businesstype');
     const startupstageFromUrl = urlParams.get('startupstage');
     const industryFromUrl = urlParams.get('industry');
-    const parkingFromUrl = urlParams.get('parking');
-    const furnishedFromUrl = urlParams.get('furnished');
-    const offerFromUrl = urlParams.get('offer');
+
+
+    
     const sortFromUrl = urlParams.get('sort');
     const orderFromUrl = urlParams.get('order');
 
@@ -40,9 +40,9 @@ export default function Search() {
       businesstypeFromUrl ||
       startupstageFromUrl ||
       industryFromUrl ||
-      parkingFromUrl ||
-      furnishedFromUrl ||
-      offerFromUrl ||
+
+
+      
       sortFromUrl ||
       orderFromUrl
     ) {
@@ -52,9 +52,9 @@ export default function Search() {
         businesstype: businesstypeFromUrl || 'businessall',
         startupstage: startupstageFromUrl || 'stageall',
         industry: industryFromUrl || 'industryall',
-        parking: parkingFromUrl === 'true' ? true : false,
-        furnished: furnishedFromUrl === 'true' ? true : false,
-        offer: offerFromUrl === 'true' ? true : false,
+
+
+        
         sort: sortFromUrl || 'created_at',
         order: orderFromUrl || 'desc',
       });
@@ -125,17 +125,7 @@ export default function Search() {
       setSidebardata({ ...sidebardata, searchTerm: e.target.value });
     }
 
-    if (
-      e.target.id === 'parking' ||
-      e.target.id === 'furnished' ||
-      e.target.id === 'offer'
-    ) {
-      setSidebardata({
-        ...sidebardata,
-        [e.target.id]:
-          e.target.checked || e.target.checked === 'true' ? true : false,
-      });
-    }
+
 
     if (e.target.id === 'sort_order') {
       const sort = e.target.value.split('_')[0] || 'created_at';
@@ -154,9 +144,9 @@ export default function Search() {
     urlParams.set('businesstype', sidebardata.businesstype);
     urlParams.set('startupstage', sidebardata.startupstage);
     urlParams.set('industry', sidebardata.industry);
-    urlParams.set('parking', sidebardata.parking);
-    urlParams.set('furnished', sidebardata.furnished);
-    urlParams.set('offer', sidebardata.offer);
+
+
+    
     urlParams.set('sort', sidebardata.sort);
     urlParams.set('order', sidebardata.order);
     const searchQuery = urlParams.toString();
@@ -237,16 +227,7 @@ export default function Search() {
               <span>Revenue Sharing</span>
             </div>
             
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='offer'
-                className='w-5'
-                onChange={handleChange}
-                checked={sidebardata.offer}
-              />
-              <span>Offer</span>
-            </div>
+            
           </div>
           <div className='flex gap-2 flex-wrap items-center'>
             <label className='font-semibold'>Business Type:</label>
@@ -377,26 +358,8 @@ export default function Search() {
           </div>  
           <div className='flex gap-2 flex-wrap items-center'>
             <label className='font-semibold'>Amenities:</label>
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='parking'
-                className='w-5'
-                onChange={handleChange}
-                checked={sidebardata.parking}
-              />
-              <span>Parking</span>
-            </div>
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='furnished'
-                className='w-5'
-                onChange={handleChange}
-                checked={sidebardata.furnished}
-              />
-              <span>Furnished</span>
-            </div>
+            
+
           </div>
           <div className='flex items-center gap-2'>
             <label className='font-semibold'>Sort:</label>

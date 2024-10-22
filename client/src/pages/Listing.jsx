@@ -6,12 +6,11 @@ import { useSelector } from 'react-redux';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import {
-  FaBath,
-  FaBed,
-  FaChair,
+
+
   FaMapMarkedAlt,
   FaMapMarkerAlt,
-  FaParking,
+
   FaShare,
 } from 'react-icons/fa';
 import Contact from '../components/Contact';
@@ -148,11 +147,7 @@ export default function Listing() {
               <p className='bg-olive5 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
                 {listing.industry}
               </p>
-              {listing.offer && (
-                <p className='bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md'>
-                  ${+listing.neededFund - +listing.discountPrice} OFF
-                </p>
-              )}
+              
             </div>
             <p className='text-slate-800'>
               <span className='font-semibold text-black'>Description - </span>

@@ -22,14 +22,13 @@ export default function CreateListing() {
     businesstype: 'Startups',
     startupstage: 'Idea Stage',
     industry: 'Technology',
-    bedrooms: 1,
-    bathrooms: 1,
+
     neededFund: 50,
     minimumInvestmentAmount: 1,
-    discountPrice: 0,
-    offer: false,
-    parking: false,
-    furnished: false,
+    
+    
+    
+    
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -125,16 +124,7 @@ export default function CreateListing() {
       });
     }
 
-    if (
-      e.target.id === 'parking' ||
-      e.target.id === 'furnished' ||
-      e.target.id === 'offer'
-    ) {
-      setFormData({
-        ...formData,
-        [e.target.id]: e.target.checked,
-      });
-    }
+
 
     if (
       e.target.type === 'number' ||
@@ -153,8 +143,7 @@ export default function CreateListing() {
     try {
       if (formData.imageUrls.length < 1)
         return setError('You must upload at least one image');
-      if (+formData.neededFund < +formData.discountPrice)
-        return setError('Discount price must be lower than regular price');
+      
       if (+formData.neededFund < +formData.minimumInvestmentAmount)
         return setError('Minimum Investment Amount must be lower than Needed Fund');
       setLoading(true);
@@ -355,68 +344,10 @@ export default function CreateListing() {
             </select>
             </div>
           </div>
-          <div className='flex gap-6 flex-wrap'>
-            
-            
-            
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='parking'
-                className='w-5'
-                onChange={handleChange}
-                checked={formData.parking}
-              />
-              <span>Parking spot</span>
-            </div>
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='furnished'
-                className='w-5'
-                onChange={handleChange}
-                checked={formData.furnished}
-              />
-              <span>Furnished</span>
-            </div>
-            <div className='flex gap-2'>
-              <input
-                type='checkbox'
-                id='offer'
-                className='w-5'
-                onChange={handleChange}
-                checked={formData.offer}
-              />
-              <span>Offer</span>
-            </div>
-          </div>
+          
           <div className='flex flex-wrap gap-6'>
-            <div className='flex items-center gap-2'>
-              <input
-                type='number'
-                id='bedrooms'
-                min='1'
-                max='10'
-                required
-                className='p-3 border border-gray-300 rounded-lg'
-                onChange={handleChange}
-                value={formData.bedrooms}
-              />
-              <p>Beds</p>
-            </div>
-            <div className='flex items-center gap-2'>
-              <input
-                type='number'
-                id='bathrooms'
-                min='1'
-                max='10'
-                required
-                className='p-3 border border-gray-300 rounded-lg'
-                onChange={handleChange}
-                value={formData.bathrooms}
-              />
-              <p>Baths</p>
-            </div>
+            
+            
             <div className='flex items-center gap-2'>
               <input
                 type='number'
@@ -453,27 +384,7 @@ export default function CreateListing() {
                 )}
               </div>
             </div>
-            {formData.offer && (
-              <div className='flex items-center gap-2'>
-                <input
-                  type='number'
-                  id='discountPrice'
-                  min='0'
-                  max='10000000'
-                  required
-                  className='p-3 border border-gray-300 rounded-lg'
-                  onChange={handleChange}
-                  value={formData.discountPrice}
-                />
-                <div className='flex flex-col items-center'>
-                  <p>Discounted price</p>
-
-                  {formData.investmenttype === 'rent' && (
-                    <span className='text-xs'>($ / month)</span>
-                  )}
-                </div>
-              </div>
-            )}
+            
           </div>
         </div>
         <div className='flex flex-col flex-1 gap-4'>

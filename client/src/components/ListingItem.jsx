@@ -27,11 +27,9 @@ export default function ListingItem({ listing }) {
             {listing.description}
           </p>
           <p className='text-olive5 mt-2 font-semibold '>
-            $
-            {listing.offer
-              ? listing.discountPrice.toLocaleString('en-US')
-              : `${listing.neededFund.toLocaleString('en-US')} / $${listing.minimumInvestmentAmount.toLocaleString('en-US')}`}
-            {listing.investmenttype === 'rent' && ' / month'}
+            
+            ${listing.neededFund.toLocaleString('en-US')} / ${listing.minimumInvestmentAmount.toLocaleString('en-US')}
+            
           </p>
           <div className='text-black flex gap-4'>
             <div className='font-bold text-xs'>
